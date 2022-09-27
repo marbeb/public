@@ -1,0 +1,255 @@
+:25 UTC Tue Sep 27 2022 by admin
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname Switch01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username admin privilege 15 secret 5 $1$64UE$qXjU0lzmovF3mixDNM0QX0
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain CISCO-vIOS
+vtp mode transparent
+!
+!
+!
+ip domain-name WIN10
+ip cef
+no ipv6 cef
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 10,20,30 
+!
+vlan 90
+ name Infra
+!
+vlan 100
+ name VLAN100
+!
+vlan 200,300 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description OFFICE
+ switchport access vlan 10
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description INDUSTIRAL 20
+ switchport access vlan 20
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ description R&D
+ switchport access vlan 30
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet2/0
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet2/1
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet2/2
+ description R&D
+ switchport access vlan 30
+ negotiation auto
+!
+interface GigabitEthernet2/3
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/0
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/1
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/2
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ description BLACKHOLE
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ media-type rj45
+ negotiation auto
+!
+interface Vlan1
+ ip address 10.101.1.2 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ logging synchronous
+ login local
+ transport input ssh
+!
+!
+end
