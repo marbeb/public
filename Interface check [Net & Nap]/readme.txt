@@ -1,10 +1,6 @@
 NAPALM AND NETMIKO
 
-
-pobiera interfaces i wrzuca do zagniezdzonej dictionary,
-pobiera tylko i wylacznie key (czyli nasz interface) i dodaje to do listy
-
-!!!! USUWA INTERFACE VLAN I ZOSTAWIA SAME FIZYCZNE INTERFACE
+USUWA INTERFACE VLAN I ZOSTAWIA SAME FIZYCZNE INTERFACE
 
 1. Na poczatku tworzy backup calej konfiguracji
 2. sprawdza w jakim vlanie jest kazdy interface
