@@ -9,5 +9,4 @@ do zmiany
 
 if not '0 input errors' in interface_counters:
 
-'0 input errors' to to samo co '10 input errors'
-wymyslic jak to zrobic
+'0 input errors' to to samo co '10 input errors'  ---->>> błąd poprawiony w 'errors on interface [Netmiko]"
