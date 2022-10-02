@@ -17,12 +17,13 @@ while True:
 
     try:
         connection = Netmiko(host=IP, port='22', username=login, password=password, device_type='cisco_ios')
+        break
     except NetmikoTimeoutException:
         print(f'Cannot connect to {IP}, check network status.')
-        False
+        True
     except NetMikoAuthenticationException:
         print('Can not autorize to the device, check password.')
-        False
+        True
     
 interfaces = connection.send_command('show running | i interface')
 interfaces = interfaces.splitlines()
