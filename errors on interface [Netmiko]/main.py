@@ -1,14 +1,29 @@
 from netmiko import Netmiko
 import re
 import getpass
+from netmiko import NetmikoTimeoutException
+from netmiko import NetMikoAuthenticationException
 
 IP = input('Enter device address IP: ')
 login = input('Enter login: ')
 password = getpass.getpass('Enter password: ')
 
 #########NETMIKO CONNECTION#######################
-connection = Netmiko(host=IP, port='22', username=login, password=password, device_type='cisco_ios')
+while True:
+    IP = input('Enter device address IP: ')
+    login = input('Enter login: ')
+    password = input('Enter password: ')
+    #password = getpass.getpass('Enter password: ')
 
+    try:
+        connection = Netmiko(host=IP, port='22', username=login, password=password, device_type='cisco_ios')
+    except NetmikoTimeoutException:
+        print(f'Cannot connect to {IP}, check network status.')
+        False
+    except NetMikoAuthenticationException:
+        print('Can not autorize to the device, check password.')
+        False
+    
 interfaces = connection.send_command('show running | i interface')
 interfaces = interfaces.splitlines()
 
